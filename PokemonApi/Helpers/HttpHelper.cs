@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using RestSharp;
+using RestSharp.Serialization;
 
 namespace PokemonApi.Helpers
 {
@@ -28,16 +29,17 @@ namespace PokemonApi.Helpers
 		/// <summary>
 		/// Gets the response from a HTTP Rest POST endpoint
 		/// </summary>
-		/// <param name="uri">The URI to GET</param>
 		/// <param name="uri">The URI to POST to</param>
-		public IRestResponse GetPostResponse(string uri, List<Parameter> parameters)
+		/// <param name="body">The object to serialize and post in the body as JSON</param>
+		public IRestResponse GetPostJsonResponse(string uri, object body)
 		{
 			var client = new RestClient(uri)
 			{
 				Encoding = Encoding.UTF8
 			};
 			var request = new RestRequest(Method.POST);
-			request.Parameters.AddRange(parameters);
+			request.RequestFormat = DataFormat.Json;
+			request.AddJsonBody(body ?? string.Empty);
 			var response = client.Execute(request);
 			return response;
 		}

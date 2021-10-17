@@ -16,7 +16,7 @@ using RestSharp;
 
 namespace PokemonApiTest.Providers
 {
-	public class Tests
+	public class PokeApiProviderTests
 	{
 		private static Fixture _fixture;
 

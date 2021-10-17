@@ -46,7 +46,6 @@ C:\Users\Work\Desktop\Pokemon-Api\PokemonApi\bin\Debug\net5.0\Swashbuckle.AspNet
 C:\Users\Work\Desktop\Pokemon-Api\PokemonApi\bin\Debug\net5.0\Swashbuckle.AspNetCore.Swagger.dll
 C:\Users\Work\Desktop\Pokemon-Api\PokemonApi\bin\Debug\net5.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 C:\Users\Work\Desktop\Pokemon-Api\PokemonApi\bin\Debug\net5.0\Swashbuckle.AspNetCore.SwaggerUI.dll
-C:\Users\Work\Desktop\Pokemon-Api\PokemonApi\obj\Debug\net5.0\PokemonApi.csproj.AssemblyReference.cache
 C:\Users\Work\Desktop\Pokemon-Api\PokemonApi\obj\Debug\net5.0\PokemonApi.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\Work\Desktop\Pokemon-Api\PokemonApi\obj\Debug\net5.0\PokemonApi.AssemblyInfoInputs.cache
 C:\Users\Work\Desktop\Pokemon-Api\PokemonApi\obj\Debug\net5.0\PokemonApi.AssemblyInfo.cs
