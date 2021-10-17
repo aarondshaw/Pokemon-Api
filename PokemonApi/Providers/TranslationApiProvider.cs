@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -29,7 +30,7 @@ namespace PokemonApi.Providers
 		/// <param name="httpHelper">An instance of an IHttpHelper object</param>
 		public TranslationApiProvider(IConfiguration configuration, IHttpHelper httpHelper)
 		{
-			_apiBaseUrl = configuration["ShakespeareApiBaseUrl"];
+			_apiBaseUrl = configuration["TranslationApiBaseUrl"];
 			_httpHelper = httpHelper;
 		}
 
@@ -44,7 +45,8 @@ namespace PokemonApi.Providers
 			var requestBody = new { text = text };
 			try
 			{
-				var response = _httpHelper.GetPostJsonResponse(_apiBaseUrl, requestBody);
+				var requestUri = _apiBaseUrl.Replace("{language}", translateTo.ToLower(), StringComparison.InvariantCultureIgnoreCase);
+				var response = _httpHelper.GetPostJsonResponse(requestUri, requestBody);
 				if (response.StatusCode != HttpStatusCode.OK) return translation;
 				var responseObj = JsonConvert.DeserializeObject<TranslationResponse>(response.Content);
 				if (responseObj != null && responseObj.Success.Total == 1)

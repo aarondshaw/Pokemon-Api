@@ -61,3 +61,4 @@ C:\Users\Work\Desktop\Pokemon-Api\PokemonApi\obj\Debug\net5.0\PokemonApi.dll
 C:\Users\Work\Desktop\Pokemon-Api\PokemonApi\obj\Debug\net5.0\ref\PokemonApi.dll
 C:\Users\Work\Desktop\Pokemon-Api\PokemonApi\obj\Debug\net5.0\PokemonApi.pdb
 C:\Users\Work\Desktop\Pokemon-Api\PokemonApi\obj\Debug\net5.0\PokemonApi.genruntimeconfig.cache
+C:\Users\Work\Desktop\Pokemon-Api\PokemonApi\obj\Debug\net5.0\PokemonApi.csproj.AssemblyReference.cache
