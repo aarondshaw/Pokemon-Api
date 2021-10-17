@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Work\\source\\repos\\PokemonApi\\PokemonApi\\PokemonApiTest\\PokemonApiTest.csproj": {}
+    "C:\\Users\\Work\\Desktop\\Pokemon-Api\\PokemonApiTest\\PokemonApiTest.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Work\\source\\repos\\PokemonApi\\PokemonApi\\PokemonApiTest\\PokemonApiTest.csproj": {
+    "C:\\Users\\Work\\Desktop\\Pokemon-Api\\PokemonApiTest\\PokemonApiTest.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Work\\source\\repos\\PokemonApi\\PokemonApi\\PokemonApiTest\\PokemonApiTest.csproj",
+        "projectUniqueName": "C:\\Users\\Work\\Desktop\\Pokemon-Api\\PokemonApiTest\\PokemonApiTest.csproj",
         "projectName": "PokemonApiTest",
-        "projectPath": "C:\\Users\\Work\\source\\repos\\PokemonApi\\PokemonApi\\PokemonApiTest\\PokemonApiTest.csproj",
+        "projectPath": "C:\\Users\\Work\\Desktop\\Pokemon-Api\\PokemonApiTest\\PokemonApiTest.csproj",
         "packagesPath": "C:\\Users\\Work\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Work\\source\\repos\\PokemonApi\\PokemonApi\\PokemonApiTest\\obj\\",
+        "outputPath": "C:\\Users\\Work\\Desktop\\Pokemon-Api\\PokemonApiTest\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Work\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -28,8 +28,8 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "C:\\Users\\Work\\source\\repos\\PokemonApi\\PokemonApi\\PokemonApi\\PokemonApi.csproj": {
-                "projectPath": "C:\\Users\\Work\\source\\repos\\PokemonApi\\PokemonApi\\PokemonApi\\PokemonApi.csproj"
+              "C:\\Users\\Work\\Desktop\\Pokemon-Api\\PokemonApi\\PokemonApi.csproj": {
+                "projectPath": "C:\\Users\\Work\\Desktop\\Pokemon-Api\\PokemonApi\\PokemonApi.csproj"
               }
             }
           }
@@ -96,14 +96,14 @@
         }
       }
     },
-    "C:\\Users\\Work\\source\\repos\\PokemonApi\\PokemonApi\\PokemonApi\\PokemonApi.csproj": {
+    "C:\\Users\\Work\\Desktop\\Pokemon-Api\\PokemonApi\\PokemonApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Work\\source\\repos\\PokemonApi\\PokemonApi\\PokemonApi\\PokemonApi.csproj",
+        "projectUniqueName": "C:\\Users\\Work\\Desktop\\Pokemon-Api\\PokemonApi\\PokemonApi.csproj",
         "projectName": "PokemonApi",
-        "projectPath": "C:\\Users\\Work\\source\\repos\\PokemonApi\\PokemonApi\\PokemonApi\\PokemonApi.csproj",
+        "projectPath": "C:\\Users\\Work\\Desktop\\Pokemon-Api\\PokemonApi\\PokemonApi.csproj",
         "packagesPath": "C:\\Users\\Work\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Work\\source\\repos\\PokemonApi\\PokemonApi\\PokemonApi\\obj\\",
+        "outputPath": "C:\\Users\\Work\\Desktop\\Pokemon-Api\\PokemonApi\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Work\\AppData\\Roaming\\NuGet\\NuGet.Config",

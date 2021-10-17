@@ -13,10 +13,15 @@ namespace PokemonApi.Controllers
 	{
 
 		private readonly IPokeApiProvider _pokeApiProvider;
+		private readonly IShakespeareApiProvider _shakespeareApiProvider;
+		private readonly IYodaApiProvider _yodaApiProvider;
+		private const string YodaHabitat = "cave";
 
-		public PokemonController(IPokeApiProvider pokeApiProvider)
+		public PokemonController(IPokeApiProvider pokeApiProvider, IShakespeareApiProvider shakespeareApiProvider, IYodaApiProvider yodaApiProvider)
 		{
 			_pokeApiProvider = pokeApiProvider;
+			_shakespeareApiProvider = shakespeareApiProvider;
+			_yodaApiProvider = yodaApiProvider;
 		}
 
 
@@ -38,6 +43,14 @@ namespace PokemonApi.Controllers
 			try
 			{
 				var pokemon = _pokeApiProvider.GetPokemon(name);
+				if (pokemon.Habitat == YodaHabitat || pokemon.IsLegendary)
+				{
+					pokemon.Description = _yodaApiProvider.GetTranslation(pokemon.Description);
+				}
+				else
+				{
+					pokemon.Description = _shakespeareApiProvider.GetTranslation(pokemon.Description);
+				}
 				return new OkObjectResult(pokemon);
 			}
 			catch (PokemonNotFoundException)

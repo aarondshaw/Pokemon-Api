@@ -15,12 +15,16 @@ namespace PokemonApiTest.Controllers
 	public class Tests
 	{
 		private IPokeApiProvider _pokeApiProvider;
+		private IShakespeareApiProvider _shakespeareApiProvider;
+		private IYodaApiProvider _yodaApiProvider;
 		private static Fixture _fixture;
 
 		[SetUp]
 		public void Setup()
 		{
 			_pokeApiProvider = Substitute.For<IPokeApiProvider>();
+			_shakespeareApiProvider = Substitute.For<IShakespeareApiProvider>();
+			_yodaApiProvider = Substitute.For<IYodaApiProvider>();
 			_fixture = new Fixture();
 		}
 
@@ -29,7 +33,7 @@ namespace PokemonApiTest.Controllers
 		{
 			var pokeMock = _fixture.Create<Pokemon>();
 			_pokeApiProvider.GetPokemon(Arg.Any<string>()).Returns(pokeMock);
-			var api = new PokemonController(_pokeApiProvider);
+			var api = new PokemonController(_pokeApiProvider,_shakespeareApiProvider,_yodaApiProvider);
 			var result = api.Get("DummyPokemon") as ObjectResult;
 			Assert.AreEqual((int)HttpStatusCode.OK,result.StatusCode);
 			var resultObj = result.Value as Pokemon;
@@ -40,7 +44,7 @@ namespace PokemonApiTest.Controllers
 		public void TestPokemonNonExisting()
 		{
 			_pokeApiProvider.GetPokemon(Arg.Any<string>()).Throws(new PokemonNotFoundException());
-			var api = new PokemonController(_pokeApiProvider);
+			var api = new PokemonController(_pokeApiProvider, _shakespeareApiProvider, _yodaApiProvider);
 			var result = api.Get("DummyPokemon") as StatusCodeResult;
 			Assert.AreEqual((int)HttpStatusCode.NotFound, result.StatusCode);
 		}
@@ -49,11 +53,58 @@ namespace PokemonApiTest.Controllers
 		public void TestApiException()
 		{
 			_pokeApiProvider.GetPokemon(Arg.Any<string>()).Throws(new ApiException("api unavailable"));
-			var api = new PokemonController(_pokeApiProvider);
+			var api = new PokemonController(_pokeApiProvider, _shakespeareApiProvider, _yodaApiProvider);
 			var result = api.Get("DummyPokemon") as StatusCodeResult;
 			Assert.AreEqual((int)HttpStatusCode.ServiceUnavailable, result.StatusCode);
 		}
 
+		[Test]
+		public void TestPokemonExistingTranslatedShakespeare()
+		{
+			var pokeMock = _fixture.Create<Pokemon>();
+			pokeMock.Habitat = "anything";
+			pokeMock.IsLegendary = false;
+			_pokeApiProvider.GetPokemon(Arg.Any<string>()).Returns(pokeMock);
+			var api = new PokemonController(_pokeApiProvider, _shakespeareApiProvider, _yodaApiProvider);
+			var result = api.Get("DummyPokemon") as ObjectResult;
+			Assert.AreEqual((int)HttpStatusCode.OK, result.StatusCode);
+			_shakespeareApiProvider.Received(1).GetTranslation(Arg.Any<string>());
+			_yodaApiProvider.DidNotReceive().GetTranslation(Arg.Any<string>());
+			var resultObj = result.Value as Pokemon;
+			Assert.AreEqual(resultObj.Name, pokeMock.Name);
+		}
+
+		[Test]
+		public void TestPokemonExistingTranslatedYodaHabitat()
+		{
+			var pokeMock = _fixture.Create<Pokemon>();
+			pokeMock.Habitat = "cave";
+			pokeMock.IsLegendary = false;
+			_pokeApiProvider.GetPokemon(Arg.Any<string>()).Returns(pokeMock);
+			var api = new PokemonController(_pokeApiProvider, _shakespeareApiProvider, _yodaApiProvider);
+			var result = api.Get("DummyPokemon") as ObjectResult;
+			Assert.AreEqual((int)HttpStatusCode.OK, result.StatusCode);
+			_shakespeareApiProvider.DidNotReceive().GetTranslation(Arg.Any<string>());
+			_yodaApiProvider.Received(1).GetTranslation(Arg.Any<string>());
+			var resultObj = result.Value as Pokemon;
+			Assert.AreEqual(resultObj.Name, pokeMock.Name);
+		}
+
+		[Test]
+		public void TestPokemonExistingTranslatedYodaIsLegendary()
+		{
+			var pokeMock = _fixture.Create<Pokemon>();
+			pokeMock.Habitat = "any";
+			pokeMock.IsLegendary = true;
+			_pokeApiProvider.GetPokemon(Arg.Any<string>()).Returns(pokeMock);
+			var api = new PokemonController(_pokeApiProvider, _shakespeareApiProvider, _yodaApiProvider);
+			var result = api.Get("DummyPokemon") as ObjectResult;
+			Assert.AreEqual((int)HttpStatusCode.OK, result.StatusCode);
+			_shakespeareApiProvider.DidNotReceive().GetTranslation(Arg.Any<string>());
+			_yodaApiProvider.Received(1).GetTranslation(Arg.Any<string>());
+			var resultObj = result.Value as Pokemon;
+			Assert.AreEqual(resultObj.Name, pokeMock.Name);
+		}
 
 	}
 }

@@ -31,6 +31,8 @@ namespace PokemonApi
 
 			services.AddControllers();
 			services.AddScoped<IPokeApiProvider, PokeApiProvider>();
+			services.AddScoped<IShakespeareApiProvider, ShakespeareApiProvider>();
+			services.AddScoped<IYodaApiProvider, YodaApiProvider>();
 			services.AddScoped<IHttpHelper, HttpHelper>();
 			services.AddSwaggerGen(c =>
 			{
