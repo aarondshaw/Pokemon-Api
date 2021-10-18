@@ -1,6 +1,5 @@
 using System.Net;
 using AutoFixture;
-using Castle.Core.Logging;
 using Microsoft.AspNetCore.Mvc;
 using NSubstitute;
 using NSubstitute.ExceptionExtensions;

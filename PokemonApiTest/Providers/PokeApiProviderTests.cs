@@ -1,13 +1,9 @@
 using System.Net;
 using AutoFixture;
-using Castle.DynamicProxy.Generators.Emitters.SimpleAST;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
 using NSubstitute;
-using NSubstitute.ExceptionExtensions;
 using NUnit.Framework;
-using PokemonApi.Controllers;
 using PokemonApi.Exceptions;
 using PokemonApi.Helpers;
 using PokemonApi.Model;
