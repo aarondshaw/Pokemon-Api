@@ -14,7 +14,6 @@ namespace PokemonApi.Controllers
 
 		private readonly IPokeApiProvider _pokeApiProvider;
 		private readonly ITranslationApiProvider _translationApiProvider;
-		private const string YodaHabitat = "cave";
 		private const string YodaTranslation = "Yoda";
 		private const string ShakespeareTranslation = "Shakespeare";
 
@@ -76,14 +75,12 @@ namespace PokemonApi.Controllers
 			try
 			{
 				var pokemon = _pokeApiProvider.GetPokemon(name);
-				if (pokemon.Habitat == YodaHabitat || pokemon.IsLegendary)
+				var translationLang = ShakespeareTranslation;
+				if (pokemon.IsYodaTypePokemon())
 				{
-					pokemon.Description = _translationApiProvider.GetTranslation(YodaTranslation, pokemon.Description);
+					translationLang = YodaTranslation;
 				}
-				else
-				{
-					pokemon.Description = _translationApiProvider.GetTranslation(ShakespeareTranslation, pokemon.Description);
-				}
+				pokemon.Description = _translationApiProvider.GetTranslation(translationLang, pokemon.Description);
 
 				return new OkObjectResult(pokemon);
 			}
